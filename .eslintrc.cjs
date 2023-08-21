@@ -6,8 +6,8 @@ module.exports = {
 		'airbnb',
 		'airbnb/hooks',
 		'airbnb-typescript',
-		'prettier',
 		'plugin:prettier/recommended',
+		'prettier', // 충돌방지를 위해 가장 마지막에 작성
 	],
 	ignorePatterns: ['dist', '.eslintrc.cjs'],
 	parserOptions: {
@@ -17,5 +17,6 @@ module.exports = {
 	plugins: ['react-refresh'],
 	rules: {
 		'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+		"prettier/prettier": ["error", { endOfLine: "auto" }],
 	},
 };
