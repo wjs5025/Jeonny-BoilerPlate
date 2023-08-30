@@ -7,16 +7,15 @@ module.exports = {
 		'airbnb/hooks',
 		'airbnb-typescript',
 		'plugin:prettier/recommended',
-		'prettier', // 충돌방지를 위해 가장 마지막에 작성
+		'prettier',
 	],
-	ignorePatterns: ['dist', '.eslintrc.cjs'],
+	ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts'],
 	parserOptions: {
 		project: './tsconfig.json',
 	},
 	parser: '@typescript-eslint/parser',
-	plugins: ['react-refresh'],
+	plugins: ['@typescript-eslint', 'react', 'prettier'],
 	rules: {
-		'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
-		"prettier/prettier": ["error", { endOfLine: "auto" }],
+		'prettier/prettier': ['error', { endOfLine: 'auto' }],
 	},
 };
