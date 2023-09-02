@@ -1,6 +1,6 @@
 {
   "name": "jeonny-boilerplate",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "packages / React + Typescript + Prettier + ESLint + axios + React-Router-Dom",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
