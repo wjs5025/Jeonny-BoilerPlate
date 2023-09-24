@@ -17,7 +17,6 @@
   - **conponents** Stores reusable UI components. <br/>(재사용 가능한 UI 컴포넌트를 저장합니다.)
   - **constants** Stores constant values ​​used within the application. <br/>(애플리케이션 내에서 사용되는 상수값을 저장합니다.)
   - **hooks** Saves custom custom hooks. <br/>(사용자 정의 커스텀 훅을 저장합니다.)
-  - **layouts** Stores the components that define the page layout. <br/>(페이지 레이아웃을 정의하는 컴포넌트를 저장합니다.)
   - **pages** Stores the main view pages displayed by the router. <br/>(라우터에 의해 표시되는 주요 뷰 페이지를 저장합니다.)
   - **store** Stores files related to global state management. <br/>(전역 상태 관리와 관련된 파일을 저장합니다.)
   - **styles** Save the files associated with the style. <br/>(스타일과 관련된 파일을 저장합니다.)
@@ -44,6 +43,10 @@ cd my-project
 ```bash
 npx create-jb-app my-project
 ```
+
+# version
+- 1.0.0 : default react project settings with vite 
+- 2.0.0 : vite -> Create-React-App, change directory structure
 
 # info
 - creator : [Jeonny](https://github.com/wjs5025/)

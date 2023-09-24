@@ -1,6 +1,6 @@
 {
   "name": "jeonny-boilerplate",
-  "version": "0.1.3",
+  "version": "2.0.0",
   "description": "packages / React + Typescript + Prettier + ESLint + axios + React-Router-Dom",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,7 +17,7 @@
   "author": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wjs5025/react-ts-default-settings.git"
+    "url": "https://github.com/wjs5025/Jeonny-BoilerPlate"
   },
   "license": "ISC"
 }
