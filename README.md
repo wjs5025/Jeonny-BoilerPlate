@@ -1,5 +1,5 @@
 # Jeonny-BoilerPlate
-- Initial setup of React + Typescript development environment using vite. <br/>(vite를 활용해 React + Typescript 개발 환경을 초기 설정합니다.)
+- Initial setup of React + Typescript development environment using Create-React-App. <br/>(Create-React-App를 활용해 React + Typescript 개발 환경을 초기 설정합니다.)
 
 # include libs
 - react
@@ -45,8 +45,8 @@ npx create-jb-app my-project
 ```
 
 # version
-- 1.0.0 : default react project settings with vite 
-- 2.0.0 : vite -> Create-React-App, change directory structure
+- 1.0.0 : default react project settings with vite
+- 2.0.0 : Create-React-App -> Create-React-App, change directory structure
 
 # info
 - creator : [Jeonny](https://github.com/wjs5025/)
