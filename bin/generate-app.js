@@ -1,25 +1,36 @@
 #! /usr/bin/env node
 
-const { execSync } = require("child_process");
+const { execSync, exec } = require("child_process");
 const path = require("path");
 const fs = require("fs");
 
 if (process.argv.length < 3) {
     console.log("You have to provide a 'jeonny-boilerplate' to your app.");
     console.log("For example :");
-    console.log("    npx create-jb-app [my-app]");
+    console.log("    npx create-jb-app preoject-name [--use next|react]");
     process.exit(1);
 }
 
 
 const projectName = process.argv[2];
 const currentPath = process.cwd();
-const projectPath = path.join(currentPath, projectName);
+const projectPath = path.join(currentPath, projectName)
+const useOption = process.argv[3];
+const useOptionValue = process.argv[4];
 const GIT_REPO = `https://github.com/wjs5025/react-ts-default-settings.git`;
 
 if (projectName !== ".") {
     try {
+      // Check command - use Option
+      if (useOption && useOption === "--use"){
+        if (!(useOptionValue === "next" || useOptionValue === "react")){
+          throw new Error("The use option is incorrect. : After the --use option, only next and react can appear.")
+        }
+      }
+
+      // Make Dircetory and Change Work Dircetory
       fs.mkdirSync(projectPath);
+      process.chdir(projectPath);
     } catch (err) {
       if (err.code === "EEXIST") {
         console.log(projectName);
@@ -27,31 +38,44 @@ if (projectName !== ".") {
           `The file ${projectName} already exist in the current directory, please give it another name.`
         );
       } else {
-        console.log(error);
+        console.log(err);
       }
       process.exit(1);
     }
 }
 
 async function main() {
-try {
+  try {
+    // Origin Repository Clone
     console.log("Downloading files...");
-    execSync(`git clone --depth 1 ${GIT_REPO} ${projectPath}`); // 우리의 보일러 플레이트를 clone!
+    execSync(`git init`)
+    execSync(`git remote add origin ${GIT_REPO}`);
+    execSync(`git config core.sparseCheckout true`);
+    execSync(`echo ${useOptionValue??"react"}/* >> .git/info/sparse-checkout`);
+    execSync(`git pull origin master`);
 
-    if (projectName !== ".") {
-    process.chdir(projectPath); // cd입니다 clone을 마친 후 projectPath로 진입
-    }
-
+    // Install dependencies in package.json
     console.log("Installing dependencies...");
+    process.chdir(useOptionValue ?? "react");
     execSync("npm install"); // package.json에 있는 의존성 설치
 
+    // Now remove boilerplate git stuff
     console.log("Removing useless files");
-    execSync("npx rimraf ./.git"); // 이제 보일러플레이트 git과 관련된 내용 제거
+    execSync("npx rimraf ./.git"); 
 
+    // Done
     console.log("The installation is done, this is ready to use !");
-} catch (error) {
-    console.log(error);
-}
+    console.log("Go to the root path of the project and run the following command.")
+    if (useOptionValue ==="next") {
+      console.log("npm run dev")
+    } else if (useOptionValue ==="react") {
+      console.log("npm start")
+    } else {
+      console.log("npm start")
+    }
+  } catch (error) {
+      console.log(error);
+  }
 }
   
   main();
